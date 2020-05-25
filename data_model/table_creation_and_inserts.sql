@@ -1,6 +1,7 @@
 CREATE TABLE movie_db.publication (name VARCHAR(255) PRIMARY KEY, avatar VARCHAR(21));
 CREATE TABLE movie_db.reviewer (name VARCHAR(255) PRIMARY KEY, avatar VARCHAR(255), publication VARCHAR(255), FOREIGN KEY (publication) REFERENCES publication(name) ON DELETE CASCADE);
 CREATE TABLE movie_db.moviereview (title VARCHAR(255) PRIMARY KEY, `release` VARCHAR(255), score INTEGER, reviewer VARCHAR(255), FOREIGN KEY (reviewer) REFERENCES reviewer(name) ON DELETE CASCADE);
+CREATE TABLE movie_db.pending (title VARCHAR(255) PRIMARY KEY, `release` VARCHAR(255), score INTEGER, reviewer VARCHAR(255), publication VARCHAR(255), FOREIGN KEY (reviewer) REFERENCES reviewer(name) ON DELETE CASCADE, FOREIGN KEY (publication) REFERENCES publication(name) ON DELETE CASCADE);
 
 INSERT INTO movie_db.publication (name, avatar) VALUES ('The Daily Reviewer', 'glyphicon-eye-open');
 INSERT INTO movie_db.publication (name, avatar) VALUES ('International Movie Critic', 'glyphicon-fire');
@@ -25,3 +26,7 @@ INSERT INTO movie_db.moviereview (title, `release`, score, reviewer) VALUES ('Du
 INSERT INTO movie_db.moviereview (title, `release`, score, reviewer) VALUES ('Logan', '2017', 8, 'Mindy Lee');
 INSERT INTO movie_db.moviereview (title, `release`, score, reviewer) VALUES ('Batman V Superman', '2016', 6, 'Martin Thomas');
 INSERT INTO movie_db.moviereview (title, `release`, score, reviewer) VALUES ('Mad Max: Fury Road', '2015', 6, 'Anthony Miller');
+
+INSERT INTO movie_db.pending (title, `release`, score, reviewer, publication) VALUES ('Superman: Homecoming', '2017', 10, 'Chris Harris','International Movie Critic');
+INSERT INTO movie_db.pending (title, `release`, score, reviewer, publication) VALUES ('Wonder Woman', '2017', 8, 'Martin Thomas','TheOne');
+INSERT INTO movie_db.pending (title, `release`, score, reviewer, publication) VALUES ('Doctor Strange', '2016', 7, 'Anthony Miller','ComicBookHero.com');

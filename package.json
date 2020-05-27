@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "set NODE_ENV=dev && node server.js"
+    "start": "SET NODE_ENV=dev && node server.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/juan-ruiz/movie-analyst-api#readme",
   "dependencies": {
-    "auth0-api-jwt-rsa-validation": "0.0.1",
+    "auth0-api-jwt-rsa-validation": "0.0.3",
     "express": "^4.15.2",
     "express-jwt": "^5.3.0",
     "mysql": "^2.14.1"

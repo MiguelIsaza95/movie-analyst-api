@@ -4,7 +4,7 @@ var app = express();
 var mysql = require("mysql");
 var connection = mysql.createConnection({
   host     : process.env.DB_HOST || 'localhost',
-  user     : process.env.DB_USER || 'root',
+  user     : process.env.DB_USER || 'prueba',
   password : process.env.DB_PASS || 'password',
   database : process.env.DB_NAME || 'movie_db'
 });
@@ -77,6 +77,7 @@ app.get('/publications', function(req, res){
 		getPublications(function(err, publications){
 		if(err) throw err;
 		res.json(publications);
+		});
 });
 
 // Implement the pending reviews API endpoint
@@ -86,7 +87,7 @@ app.get('/pending', function(req, res){
 		res.json(pending);
 	});
 });
-	
+
 console.log("server listening through port: "+ process.env.PORT);
 // Launch our API Server and have it listen on port 3000.
 app.listen(process.env.PORT || 3000);

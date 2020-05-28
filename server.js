@@ -1,18 +1,20 @@
 // Get our dependencies
 var express = require('express');
 var app = express();
-const { Client } = require('pg')
-const  connection = {
+var mysql = require('mysql')
+var  connection = mysql.connection({
   host     : process.env.DB_HOST || 'localhost',
   user     : process.env.DB_USER || 'prueba',
   password : process.env.DB_PASS || 'password',
   database : process.env.DB_NAME || 'movie_db',
-  port     : 5432
-}
+});
 
-const client = new Client(connection)
-client.connect().catch(function(){
-	  console.log("connection failed");
+connection.connect(function(err){
+	if(err){
+	    throw err;
+	} else{
+	    console.log("connected ! connection id is " + connection.threadId);
+	}
 });
 
 function getMovies(callback) {    
